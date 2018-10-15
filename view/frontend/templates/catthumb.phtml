@@ -1,0 +1,51 @@
+<?php
+$_categories = $block->getCategories();
+if(count($_categories)){
+	?>
+
+	<div class= "catthumb">
+		<div class ="modul-title2">
+			<h2>
+				<?= __('Featured Category')	?>
+			</h2>
+		</div>
+		<ul id="catthumb">
+			<?php
+			foreach ($_categories as $category) {
+				echo 
+				'<li class="item">
+				<div class="box-cate"><div class="image"><a href="'.$category->getUrl().'"><span class="icon"><img src="'.$block->getCatResizedSlider($category).'" alt="'.$category->getName().'" /></span></a></div>
+				<h3 class ="name-cate">'.$category->getName().'</h3>
+				 
+				
+			</div></li>';
+		}
+
+		?>
+	</ul>
+</div>
+
+<script type="text/javascript">
+require(['jquery','owl_carousel'],function($) {
+	$(document).ready(function(){
+		$("#catthumb").owlCarousel({
+			autoPlay : false,
+            items : 6,
+            itemsDesktop : [1199,4],
+            itemsDesktopSmall : [991,2],
+            itemsTablet: [700,2],
+            itemsMobile : [400,1],
+            slideSpeed : 5000,
+            paginationSpeed : 1000,
+            rewindSpeed : 1000,
+            navigation : true,
+            stopOnHover : true,
+            pagination : true,
+            scrollPerPage:true,
+		});
+	});
+});
+</script>
+<?php
+}
+?>
